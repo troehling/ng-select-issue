@@ -1,10 +1,11 @@
-import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ViewChild } from '@angular/core';
 import { NgSelectComponent } from '@ng-select/ng-select';
 
 @Component({
   selector: 'app-select',
   templateUrl: './select.component.html',
-  styleUrls: ['./select.component.css']
+  styleUrls: ['./select.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush, // This is not required. The Problem stays the same with "Default"
 })
 export class SelectComponent {
 
@@ -34,6 +35,7 @@ export class SelectComponent {
   }
 
   onClick(): void {
+    // this.ngSelect.handleClearClick(); // Potential workaround with some issues (see issue in github)
     this.model = getRandomInt(4) + 1;
     console.log(`Changing value to ${this.model}`);
     // this.cdRef.markForCheck();
