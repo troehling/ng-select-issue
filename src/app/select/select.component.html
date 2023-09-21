@@ -1,0 +1,10 @@
+<ng-select
+  #ngSelect
+  [(ngModel)]="model"
+  [editableSearchTerm]="true"
+  [items]="items"
+  [multiple]="false"
+  bindValue="value"
+  bindLable="label"
+></ng-select>
+<button (click)="onClick()">Change Value</button>
